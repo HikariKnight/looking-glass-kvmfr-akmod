@@ -16,6 +16,9 @@ Source:   %{url}/archive/refs/tags/%{tag}.tar.gz
 
 BuildRequires: kmodtool
 
+%description
+Kvm framebuffer relay module for use with looking-glass
+
 %{expand:%(kmodtool --target %{_target_cpu} --kmodname %{name} %{?buildforkernels:--%{buildforkernels}} %{?kernels:--for-kernels "%{?kernels}"} 2>/dev/null) }
 
 %prep

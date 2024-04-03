@@ -3,6 +3,7 @@
 %global debug_package %{nil}
 %global tag B7-rc1
 %global curl /bin/curl --location --fail --silent --output
+%global tarball https://github.com/gnif/LookingGlass/archive/refs/tags/LookingGlass-%{tag}.tar.gz
 %endif
 
 Name:     kvmfr-kmod
@@ -23,7 +24,7 @@ Kvm framebuffer relay module for use with looking-glass
 
 %prep
 cd %{_sourcedir}
-%{curl} %{_sourcedir}/LookingGlass-%{tag}.tar.gz %{source}
+%{curl} %{_sourcedir}/LookingGlass-%{tag}.tar.gz %{tarball}
 tar -xvzf LookingGlass-%{tag}.tar.gz
 %setup -q -c LookingGlass-%{tag}/module
 

@@ -25,8 +25,9 @@ Kvm framebuffer relay module for use with looking-glass
 %prep
 cd %{_sourcedir}
 %{curl} %{_sourcedir}/%{tag}.tar.gz %{tarball}
-tar -xvzf %{tag}.tar.gz
-%setup -q -c LookingGlass-%{tag}/module
+cd %{_builddir}/%{name}-%{version}
+tar -xvzf %{_sourcedir}/%{tag}.tar.gz
+cd %{_builddir}/%{name}-%{version}/LookingGlass-%{tag}/module
 
 find . -type f -name '*.c' -exec sed -i "s/#VERSION#/%{version}/" {} \+
 
@@ -45,7 +46,7 @@ for kernel_version in %{?kernel_versions}; do
  install -D -m 755 _kmod_build_${kernel_version%%___*}/kvmfr.ko %{buildroot}%{kmodinstdir_prefix}/${kernel_version%%___*}/%{kmodinstdir_postfix}/
  chmod a+x %{buildroot}%{kmodinstdir_prefix}/${kernel_version%%___*}/%{kmodinstdir_postfix}/kvmfr.ko
 done
-%{?akmod_install}
+#%{?akmod_install}
 
 %changelog
 {{{ git_dir_changelog }}}

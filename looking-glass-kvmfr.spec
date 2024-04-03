@@ -15,7 +15,7 @@ URL:      https://github.com/gnif/LookingGlass
 
 Source:   %{url}/archive/refs/tags/%{tag}.tar.gz
 
-BuildRequires: kmodtool
+BuildRequires: kmodtool curl
 
 %description
 Kvm framebuffer relay module for use with looking-glass

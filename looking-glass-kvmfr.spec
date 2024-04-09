@@ -25,6 +25,7 @@ Kvm framebuffer relay module for use with looking-glass
 %prep
 cd %{_sourcedir}
 %{curl} %{_sourcedir}/%{tag}.tar.gz %{tarball}
+mkdir %{_builddir}/%{name}-%{version}
 cd %{_builddir}/%{name}-%{version}
 tar -xvzf %{_sourcedir}/%{tag}.tar.gz
 cd %{_builddir}/%{name}-%{version}/LookingGlass-%{tag}/module

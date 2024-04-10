@@ -3,7 +3,7 @@
 %endif
 
 Name:     kvmfr
-Version:  B7~rc1
+Version:  {{{ git_dir_version }}}
 Release:  1%{?dist}
 Summary:  Kvm framebuffer relay module for use with looking-glass
 License:  GPLv2

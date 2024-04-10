@@ -2,20 +2,19 @@
 %global buildforkernels akmod
 %global debug_package %{nil}
 %global tag B7-rc1
-%global curl /bin/curl --location --fail --output
-%global tarball https://github.com/gnif/LookingGlass/archive/refs/tags/%{tag}.tar.gz
+%global ref tags
 %endif
 
 Name:     kvmfr-kmod
-Version:  B7~rc1
+Version:  {{{ git_dir_version }}}
 Release:  1%{?dist}
 Summary:  Kvm framebuffer relay module for use with looking-glass
 License:  GPLv2
 URL:      https://github.com/gnif/LookingGlass
 
-Source:   %{url}/archive/refs/tags/%{tag}.tar.gz
+Source:   %{url}/archive/refs/%{ref}/%{tag}.tar.gz
 
-BuildRequires: kmodtool curl
+BuildRequires: kmodtool
 
 %description
 Kvm framebuffer relay module for use with looking-glass
@@ -24,12 +23,6 @@ Kvm framebuffer relay module for use with looking-glass
 
 %prep
 %setup -q -c LookingGlass-%{tag}/module
-#cd %{_sourcedir}
-#%{curl} %{_sourcedir}/%{tag}.tar.gz %{tarball}
-#mkdir %{_builddir}/%{name}-%{version}
-#cd %{_builddir}/%{name}-%{version}
-#tar -xvzf %{_sourcedir}/%{tag}.tar.gz
-#cd %{_builddir}/%{name}-%{version}/LookingGlass-%{tag}
 
 find . -type f -name '*.c' -exec sed -i "s/#VERSION#/%{version}/" {} \+
 

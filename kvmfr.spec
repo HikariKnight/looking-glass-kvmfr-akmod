@@ -6,7 +6,7 @@
 %global tarball https://github.com/gnif/LookingGlass/archive/refs/tags/%{tag}.tar.gz
 %endif
 
-Name:     looking-glass-kvmfr
+Name:     kvmfr
 Version:  B7~rc1
 Release:  1%{?dist}
 Summary:  Kvm framebuffer relay module for use with looking-glass

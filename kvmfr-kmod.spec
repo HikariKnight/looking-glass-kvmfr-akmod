@@ -23,17 +23,18 @@ Kvm framebuffer relay module for use with looking-glass
 %{expand:%(kmodtool --target %{_target_cpu} --kmodname %{name} %{?buildforkernels:--%{buildforkernels}} %{?kernels:--for-kernels "%{?kernels}"} 2>/dev/null) }
 
 %prep
-cd %{_sourcedir}
-%{curl} %{_sourcedir}/%{tag}.tar.gz %{tarball}
-mkdir %{_builddir}/%{name}-%{version}
-cd %{_builddir}/%{name}-%{version}
-tar -xvzf %{_sourcedir}/%{tag}.tar.gz
-cd %{_builddir}/%{name}-%{version}/LookingGlass-%{tag}/module
+%setup -q -c LookingGlass-%{tag}/module
+#cd %{_sourcedir}
+#%{curl} %{_sourcedir}/%{tag}.tar.gz %{tarball}
+#mkdir %{_builddir}/%{name}-%{version}
+#cd %{_builddir}/%{name}-%{version}
+#tar -xvzf %{_sourcedir}/%{tag}.tar.gz
+#cd %{_builddir}/%{name}-%{version}/LookingGlass-%{tag}
 
 find . -type f -name '*.c' -exec sed -i "s/#VERSION#/%{version}/" {} \+
 
 for kernel_version  in %{?kernel_versions} ; do
-  cp -a LookingGlass-%{version} _kmod_build_${kernel_version%%___*}
+  cp -a LookingGlass-%{tag}/module _kmod_build_${kernel_version%%___*}
 done
 
 %build

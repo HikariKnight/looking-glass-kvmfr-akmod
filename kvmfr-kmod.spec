@@ -26,7 +26,7 @@ Kvm framebuffer relay module for use with looking-glass
 %{expand:%(kmodtool --target %{_target_cpu} --kmodname %{name} %{?buildforkernels:--%{buildforkernels}} %{?kernels:--for-kernels "%{?kernels}"} 2>/dev/null) }
 
 %prep
-%autosetup -c -n LookingGlass-%{tag}/module
+%autosetup -c -p1 -n LookingGlass-%{tag}/module
 
 find . -type f -name '*.c' -exec sed -i "s/#VERSION#/%{version}/" {} \+
 

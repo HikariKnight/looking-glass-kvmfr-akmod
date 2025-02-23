@@ -16,7 +16,8 @@ Source:   %{url}/archive/refs/%{ref}/%{tag}.tar.gz
 
 # Fix for Kernel 6.13, remove when merged
 # https://github.com/gnif/LookingGlass/pull/1149
-Patch0:   https://patch-diff.githubusercontent.com/raw/gnif/LookingGlass/pull/1149.patch
+#Patch0:   https://patch-diff.githubusercontent.com/raw/gnif/LookingGlass/pull/1149.patch
+Patch0: kernel-fix.patch
 
 BuildRequires: kmodtool
 BuildRequires: patch

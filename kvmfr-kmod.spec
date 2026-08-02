@@ -14,13 +14,7 @@ URL:      https://github.com/gnif/LookingGlass
 
 Source:   %{url}/archive/refs/%{ref}/%{tag}.tar.gz
 
-# Fix for Kernel 6.13, remove when merged
-# https://github.com/gnif/LookingGlass/pull/1149
-#Patch0:   https://patch-diff.githubusercontent.com/raw/gnif/LookingGlass/pull/1149.patch
-#Patch0: kernel-fix.patch
-
 BuildRequires: kmodtool
-#BuildRequires: patch
 
 %description
 Kvm framebuffer relay module for use with looking-glass
@@ -31,8 +25,6 @@ Kvm framebuffer relay module for use with looking-glass
 %setup -q -c LookingGlass-%{tag}/module
 
 find . -type f -name '*.c' -exec sed -i "s/#VERSION#/%{version}/" {} \+
-
-#%patch 0 -p1 -d LookingGlass-%{tag}
 
 for kernel_version  in %{?kernel_versions} ; do
   cp -a LookingGlass-%{tag}/module _kmod_build_${kernel_version%%___*}
